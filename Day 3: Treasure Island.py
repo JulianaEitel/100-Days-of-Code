@@ -47,7 +47,7 @@ if crossroad == "left":
         elif door == "yellow":
             print("You found the treasure! You win!")
 
-        else:
+        elif door == "blue":
             print("You've entered a room full of monsters. Game over!")
 
     else:
