@@ -40,7 +40,10 @@ From there you will need to figure out:
 
 images = [rock, paper, scissors]
 
-print(images[my_choice])
+if my_choice > 0 and my_choice < 3:
+    print(images[my_choice])
+else:
+    print("You chose and invalid number. Try again!")
 
 print("Computer chose:")
 
@@ -65,6 +68,3 @@ elif my_choice == 2 and comp_choice == 0:
 
 elif my_choice == comp_choice:
     print("It's a tie!")
-
-else:
-    print("You chose an invalid number. You lose!")
