@@ -37,24 +37,16 @@ From there you will need to figure out:
 * How you will compare the user's and the computer's choice to determine the winner (or a draw).
 * And also how you will give feedback to the player.
 """
-if my_choice == 0:
-    print(rock)
-elif my_choice == 1:
-    print(paper)
-elif my_choice == 2:
-    print(scissors)
+
+images = [rock, paper, scissors]
+
+print(images[my_choice])
 
 print("Computer chose:")
 
 comp_choice = random.randint(0, 2)
 
-if comp_choice == 0:
-    print(rock)
-elif comp_choice == 1:
-    print(paper)
-elif comp_choice == 2:
-    print(scissors)
-
+print(images[comp_choice])
 
 if my_choice == 0 and comp_choice == 2:
     print("You win!")
@@ -73,6 +65,6 @@ elif my_choice == 2 and comp_choice == 0:
 
 elif my_choice == comp_choice:
     print("It's a tie!")
-    
+
 else:
     print("You chose an invalid number. You lose!")
