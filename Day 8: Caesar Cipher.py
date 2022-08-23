@@ -1,33 +1,37 @@
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
             'v', 'w', 'x', 'y', 'z']
 
-def caesar(text, shift, direction):
-    end_text = ""
-    if direction == "decode":
-        shift *= -1
+
+def ceasar(text, shift, direction):
+    output_text = ""
     for item in text:
         if item in alphabet:
             position = alphabet.index(item)
-            new_position = position + shift
-            end_text += alphabet[new_position]
+            if direction == "encode":
+                new_position = position + shift
+            elif direction == "decode":
+                new_position = position - shift
+            output_text += alphabet[new_position]
         else:
-            end_text += item
-    print(f"Here's the {direction}d result: {end_text}")
+            output_text += item
 
-should_end = False
-while not should_end:
+    print(f"Your message is: {output_text}")
+
+
+start_again = True
+while start_again:
 
     direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift number:\n"))
-    shift %= 26
+    shift = shift % 26
 
-    caesar(text, shift, direction)
+    ceasar(text, shift, direction)
 
     restart = input("Type 'yes' if you want to go again. Otherwise type 'no'.\n")
-    if restart == "no":
-        should_end = True
+    if restart == "yes":
+        start_again = True
+
+    elif restart == "no":
+        start_again = False
         print("Goodbye!")
-
-
-
