@@ -12,10 +12,11 @@ def ceasar(text, shift, direction):
         if letter in alphabet:
             if direction == "e":
                 new_position = alphabet.index(letter) + shift
-            elif direction == "d" and letter in alphabet:
+            elif direction == "d":
                 new_position = alphabet.index(letter) - shift
 
             end_text += alphabet[new_position]
+
         else:
             end_text += letter
 
