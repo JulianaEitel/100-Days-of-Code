@@ -3,35 +3,39 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 
 
 def ceasar(text, shift, direction):
-    output_text = ""
+    start_text = []
     for item in text:
-        if item in alphabet:
-            position = alphabet.index(item)
-            if direction == "encode":
-                new_position = position + shift
-            elif direction == "decode":
-                new_position = position - shift
-            output_text += alphabet[new_position]
+        start_text += item
+
+    end_text = []
+    for letter in start_text:
+        if letter in alphabet:
+            if direction == "e":
+                new_position = alphabet.index(letter) + shift
+            elif direction == "d" and letter in alphabet:
+                new_position = alphabet.index(letter) - shift
+
+            end_text += alphabet[new_position]
         else:
-            output_text += item
+            end_text += letter
 
-    print(f"Your message is: {output_text}")
+    print(f"Your text is {''.join(end_text)}")
 
 
-start_again = True
-while start_again:
+should_restart = True
+while should_restart:
 
-    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    direction = input("Type 'e' to encrypt, type 'd' to decrypt:\n")
     text = input("Type your message:\n").lower()
     shift = int(input("Type the shift number:\n"))
     shift = shift % 26
 
     ceasar(text, shift, direction)
 
-    restart = input("Type 'yes' if you want to go again. Otherwise type 'no'.\n")
-    if restart == "yes":
-        start_again = True
+    restart = input("Do you want to go again? Type 'yes' or 'no': ")
 
-    elif restart == "no":
-        start_again = False
+    if restart == "yes":
+        should_restart = True
+    else:
+        should_restart = False
         print("Goodbye!")
